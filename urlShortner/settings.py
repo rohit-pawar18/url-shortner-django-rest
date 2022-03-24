@@ -126,9 +126,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # URL SHORTNER SETTING
 MAXIMUM_URL_CHARS = 5
+
+# dyanamic host settings, in case host change
 HOST = "http://127.0.0.1:8000/"
 
-
+#cache settings
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',

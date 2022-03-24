@@ -1,15 +1,13 @@
-from .serializer import LinkSerializer
 from rest_framework.response import Response
 from rest_framework import status
-from django.conf import settings
-from django.core.cache import cache
-from .models import Shortener, create_random_code
-
-# Create your views here.
 from rest_framework.generics import CreateAPIView
 from rest_framework.decorators import api_view
 from django.http import HttpResponseRedirect
+from django.conf import settings
+from django.core.cache import cache
 
+from .serializer import LinkSerializer
+from .models import Shortener, create_random_code
 
 
 
@@ -39,11 +37,13 @@ def get_shortner_url(request):
     except:
         return Response({"ERROR": "No url found"}, status=status.HTTP_404_NOT_FOUND)
     
+
 @api_view(['POST'])
 def create_shortner_url_cache(request):
     random_code = create_random_code()
     cache.set(random_code,request.data.get('long_url'))
     return Response({"short_url": f"{settings.HOST}{random_code}"},status=status.HTTP_201_CREATED)
+
 
 
 @api_view(['GET'])

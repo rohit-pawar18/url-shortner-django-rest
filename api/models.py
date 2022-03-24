@@ -12,8 +12,6 @@ class Shortener(models.Model):
     '''
     Creates a short url based on the long one
     
-   
-
     long_url -> The original link
 
     short_url ->  shortened link https://domain/(short_url)
@@ -40,7 +38,6 @@ class Shortener(models.Model):
 
 # Try to get the value from the settings module
 SIZE = getattr(settings, "MAXIMUM_URL_CHARS", 7)
-
 AVAIABLE_CHARS = ascii_letters + digits
 
 
